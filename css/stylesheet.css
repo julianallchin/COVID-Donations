@@ -1,0 +1,119 @@
+body,
+html {
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	background: rgb(0, 151, 255);
+	background: linear-gradient(
+		45deg,
+		rgba(0, 151, 255, 1) 0%,
+		rgba(8, 207, 164, 1) 100%
+	);
+}
+
+html {
+	height: 100%;
+}
+body {
+	height: 100%;
+	margin: 0;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.landing {
+	margin-top: 150px;
+}
+
+#countryStats {
+	background-color: white;
+	width: 500px;
+	height: 300px;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 0 auto;
+	font-family: "Varela Round", sans-serif;
+	-webkit-box-shadow: 0px 0px 45px 0px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 45px 0px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 45px 0px rgba(0, 0, 0, 0.3);
+}
+
+#countryStats span {
+	color: rgba(8, 207, 164, 1);
+}
+
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+	#countryStats {
+		width: 100%;
+		box-sizing: border-box;
+	}
+}
+
+.nav {
+	color: white;
+	font-family: "Varela Round", sans-serif;
+	position: sticky;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 100px;
+	top: 0;
+}
+
+.nav-title {
+	display: flex;
+	align-items: center;
+	margin-left: 10%;
+}
+
+.nav-title img {
+	display: inline;
+	height: 25px;
+	margin-right: 10px;
+}
+
+.nav-title h1 {
+	display: inline;
+	margin: 0px;
+}
+
+.nav-list {
+	margin-right: 10%;
+}
+
+.nav-item.circle {
+	padding: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border: solid white 1px;
+	border-radius: 50px;
+}
+
+.nav-item {
+	display: inline-block;
+	margin: 0px 30px;
+}
+
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+	.nav {
+		height: 100px;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+	.nav-list {
+		margin-right: 0;
+	}
+	.nav-title {
+		margin-top: 25px;
+		margin-left: 0;
+	}
+
+	.nav-item {
+		flex: block;
+		margin: 0px 30px;
+	}
+}
