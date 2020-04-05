@@ -4,13 +4,134 @@ html {
 	margin: 0;
 }
 
-html {
+.lift {
+	box-shadow: 0 0.15rem 1.75rem 0 rgba(31, 45, 65, 0.15);
+	-webkit-transition: box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+	transition: box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+	transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+  }
+  .lift:hover {
+	-webkit-transform: translateY(-0.3333333333rem);
+			transform: translateY(-0.3333333333rem);
+	box-shadow: 0 0.5rem 2rem 0 rgba(31, 45, 65, 0.25);
+  }
+  .lift:active {
+	-webkit-transform: none;
+			transform: none;
+	box-shadow: 0 0.15rem 1.75rem 0 rgba(31, 45, 65, 0.15);
+  }
+
+.nav-link {
+	color: white !important;
+}
+
+.rounded-mg {
+	border-radius: 10px;
+}
+
+.pt-10, .py-10 {
+    padding-top: 6rem !important;
+}
+
+.pb-10, .py-10 {
+    padding-bottom: 6rem !important;
+}
+
+.bg-light {
+	background-color: #eff3f9 !important;
+}
+
+.text-light {
+	color: #eff3f9 !important;
+}
+
+#layout {
 	background: rgb(0, 151, 255);
 	background: linear-gradient(
 		45deg,
 		rgba(0, 151, 255, 1) 0%,
 		rgba(8, 207, 164, 1) 100%
 	);
+	padding: 0;
+	margin: 0;
+}
+
+.footer .footer-brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.footer.footer-dark {
+	color: rgba(255, 255, 255, 0.6);
+}
+.footer.footer-dark hr {
+	border-color: rgba(255, 255, 255, 0.1);
+}
+.footer.footer-light {
+	color: #a2acba;
+}
+
+.svg-border-rounded svg {
+	position: absolute;
+	bottom: -6rem;
+	left: 0;
+	height: 3rem;
+	width: 100%;
+}
+.opacity-60 {
+	background-color: rgba(255, 255, 255, 0.6);}
+
+.svg-border-rounded {
+	position: relative;
+}
+.masthead-brand {
+	display: flex;
+	align-items: center;
+	/* margin-left: 10%; */
+}
+.masthead-brand img {
+	display: inline;
+	height: 25px;
+	margin-right: 10px;
+}
+
+.brand {
+	font-family: "Varela Round", sans-serif !important;
+	font-size: 2em;
+	color: white;
+	display: inline;
+	text-decoration: none;
+}
+
+.page-header-text {
+	color: rgba(255, 255, 255, 0.5) !important;
+	font-size: 1.15rem;
+}
+
+.bg-primary {
+	background-color: rgba(0, 151, 255, 1) !important;
+}
+
+.card {
+	border: none;
+}
+
+.card-header {
+    padding: 1rem 1.35rem;
+    margin-bottom: 0;
+	background-color: rgba(0, 0, 0, 0.03);
+	border-radius: 0.35rem 0.35rem 0 0;
+	color: rgba(0, 151, 255, 1);
+	
+    border-bottom: none;
+	
+    font-weight: 600;
+}
+
+.nav-link {
+	color: white;
 }
 
 html {
@@ -21,16 +142,12 @@ body {
 	margin: 0;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-}
-
-.landing {
-	margin-top: 150px;
+	font-family: "Varela Round", sans-serif !important;
 }
 
 #countryStats {
 	background-color: white;
 	width: 500px;
-	height: 300px;
 	padding: 10px;
 	border-radius: 10px;
 	margin: 0 auto;

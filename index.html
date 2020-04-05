@@ -1,37 +1,192 @@
-<html>
-	<head>
-		<link rel="stylesheet" href="css/stylesheet.css">
-		<link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet"> 
-		<script src="covidData.js"></script>
-	</head>
+<!doctype html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="theme-color" content="#563d7c">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+
+
+	<link rel="stylesheet" href="css/stylesheet.css">
+
+	<title>Hello, world!</title>
+</head>
+
 <body>
-	
-	<div id="header">
-		<nav class="nav">
-			<div class="nav-title">
-				<img src="images/mask.png">
-				<h1>corona donor</h1>
-			</div>
-			<ul class="nav-list">
-				<li class="nav-item">Need</li>
-				<li class="nav-item circle">Donate</li>
-			</ul>
+
+	<div id="layout" class="d-flex w-100 h-100 mx-auto flex-column">
+
+
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<div class="container">
+
+				<a class="navbar-brand" href="#">
+					<img src="images/mask.png" height="30" class="d-inline-block align-top" alt="">
+
+					corona donor
+				</a>
+				<button class="navbar-toggler" style="outline:none !important;" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+						viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+						stroke-linejoin="round" class="feather feather-menu">
+						<line x1="3" y1="12" x2="21" y2="12"></line>
+						<line x1="3" y1="6" x2="21" y2="6"></line>
+						<line x1="3" y1="18" x2="21" y2="18"></line>
+					</svg></button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto mr-lg-5">
+						<li class="nav-item">
+							<a class="nav-link" href="index.html">
+								Home
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="index.html">
+								Terms
+							</a>
+						</li>
+					</ul>
+					<a class="btn rounded-pill px-4 ml-lg-4 text-white" style="background-color: rgba(0, 151, 255, 1) !important;">
+						Donate
+					</a>
+				</div>
 		</nav>
+
+		<main role="main" class="inner cover">
+			<header class="py-10">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="bg-white mb-10 p-2 rounded-lg">
+							<h2>Stats in <span id="location">...</span></h2>
+							Confirmed: <span id="stats-1">...</span> <br>
+							Deaths: <span id="stats-2">...</span> <br>
+							Recovered: <span id="stats-3">...</span> <br>
+						</div>
+					</div>
+				</div>
+				<div class="svg-border-rounded text-white">
+					<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 144.54 17.34" preserveAspectRatio="none"
+						fill="currentColor">
+						<path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+					</svg>
+				</div>
+
+			</header>
+
+
+
+
+			<section class="bg-white py-10">
+				<div class="container">
+					<div class="row justify-content-center py-5">
+						<div class="col-lg-8">
+							<div class="text-center mb-10">
+
+								<h2>Hospitals Need Suplies</h2>
+								<p class="text-secondary">
+									This website can point you in the right direction of where to donate.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="row text-center">
+						<div class="col">
+							<h6>Masks</h6>
+							<a class="d-block rounded-lg lift lift-lg">
+								<img class="img-fluid rounded-lg"
+									src="https://cdn.cnn.com/cnnnext/dam/assets/200403033822-coronavirus-masks-0401-super-tease.jpg">
+							</a>
+						</div>
+						<div class="col">
+							<h6>Masks</h6>
+							<a class="d-block rounded-lg lift lift-lg">
+								<img class="img-fluid rounded-lg" src="https://www.dw.com/image/52796439_303.jpg">
+							</a>
+						</div>
+						<div class="col">
+							<h6>Masks</h6>
+							<a class="d-block rounded-lg lift lift-lg">
+								<img class="img-fluid rounded-lg"
+									src="https://cdn.cnn.com/cnnnext/dam/assets/200403033822-coronavirus-masks-0401-super-tease.jpg">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="svg-border-rounded text-light">
+					<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 144.54 17.34" preserveAspectRatio="none"
+						fill="currentColor">
+						<path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+					</svg>
+				</div>
+
+			</section>
+
+			<section class="bg-light py-10">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-8">
+							<div class="text-center mb-10">
+
+								<h2>Reduce the curve</h2>
+								<p class="text-secondary">
+									By donating, you provide safety for medical workers.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="row justify-content-center py-5">
+					<div class="w-100">
+						<canvas class="w-100" id="myChart"></canvas>
+					</div>
+				</div> -->
+
+				<div class="svg-border-rounded text-white">
+					<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 144.54 17.34" preserveAspectRatio="none"
+						fill="currentColor">
+						<path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+					</svg>
+				</div>
+
+			</section>
+
+		</main>
+
+
+		<footer class="footer pt-10 py-5 mt-auto bg-white footer-light">
+			<div class="container">
+				<div>
+					<div class="footer-brand">corona donor</div>
+					<div class="mb-3">save lives</div>
+				</div>
+				<hr class="my-5">
+				<p>Copyright © CORONA DONOR 2020</p>
+			</div>
+		</footer>
+
 	</div>
-	
-	<div class="landing">
-		<div id="countryStats">
-			<h2>Stats in <span id="country">...</span></h2>
-			Active Cases: <span id="stats-1">...</span> <br>
-			Total Cases: <span id="stats-2">...</span> <br>
-			Cases Per Million: <span id="stats-3">...</span> <br>
-			Critical: <span id="stats-4">...</span> <br>
-			Deaths: <span id="stats-5">...</span> <br>
-			Recovered: <span id="stats-6">...</span> <br>
-			Cases Today: <span id="stats-7">...</span> <br>
-			Deaths Today: <span id="stats-8">...</span> <br>
-		</div>
-	</div>
-	
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+	<script src="data.js"></script>
+	<script src="charts.js"></script>
+
 </body>
+
 </html>

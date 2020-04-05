@@ -45,6 +45,6 @@ async function organizeData() {
 	document.getElementById("stats-8").innerHTML = countryStats.todayDeaths;
 }
 
-console.clear();
+// console.clear();
 getData();
 
