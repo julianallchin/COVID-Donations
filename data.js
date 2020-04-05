@@ -66,13 +66,88 @@ function getNearHospitals() {
 		var localHospitals = findHospitals(ip.postal, 100);
 
 		localHospitals.forEach(hospital => {
-			
-			console.log(hospital.properties.NAME);
+			putHospital(hospital.properties);
 		});
 	} else {
 		console.log("Waiting...")
 		setTimeout(getNearHospitals, 250);
 	}
+}
+
+function putHospital(hospital) {
+	console.log(hospital)
+	var mapURL = "https://maps.googleapis.com/maps/api/staticmap?center=" +
+	hospital.LATITUDE + "," + hospital.LONGITUDE + "&zoom=12&size=400x400&maptype=roadmap&key=AIzaSyCApByxb6XFxjlNNLplNphviJqnSggA8xI";
+	
+	var parent = document.getElementById("nearHospitals");
+
+	var wrapper = document.createElement('div');
+	var card = document.createElement('div');
+	var row = document.createElement('div');
+	var col8 = document.createElement('div');
+	var textleft = document.createElement('div');
+	var hospitalName = document.createElement('h4');
+	var small = document.createElement('small');
+	var hospitalLocation = document.createElement('span');
+	var icon = document.createElement('i');
+	var hospitalWebsite = document.createElement('span');
+	var hospitalPhone = document.createElement('p');
+
+	var col = document.createElement('div');
+	var profileContainer = document.createElement('div');
+	var profileHeader = document.createElement('div');
+	var profileimg = document.createElement('img');
+	var profileLabelContainer = document.createElement('div');
+	var profileLabel = document.createElement('span');
+	
+	wrapper.className = 'col-xs-12 col-sm-6 col-md-6';
+	card.className = 'well rounded-mg lift p-4 m-4'
+	row.className = 'row';
+	col8.className = 'col-8';
+	textleft.className = 'text-left';
+	icon.className = 'fa fa-map-marker';
+
+	col.className = 'col';
+	profileContainer.className = 'profile-header-container';
+	profileHeader.className = 'profile-header-img';
+	profileimg.className = 'img-circle rounded-circle shadow';
+	profileLabelContainer.className = 'rank-label-container';
+	profileLabel.className = 'label label-default rank-label bg-light';
+
+	textleft.appendChild(hospitalName)
+	small.appendChild(hospitalLocation)
+	textleft.appendChild(small)
+	textleft.appendChild(hospitalWebsite)
+	textleft.appendChild(hospitalPhone)
+
+	col8.appendChild(textleft);
+
+	profileLabelContainer.appendChild(profileLabel)
+	profileHeader.appendChild(profileLabelContainer)
+	profileHeader.appendChild(profileimg)
+	profileContainer.appendChild(profileHeader)
+
+	col.appendChild(profileContainer)
+
+	row.appendChild(col8)
+	row.appendChild(col)
+
+	card.appendChild(row)
+
+	wrapper.appendChild(card)
+	
+	hospitalName.innerHTML = hospital.NAME;
+	hospitalLocation.innerHTML = hospital.ADDRESS;
+	hospitalWebsite.innerHTML = hospital.WEBSITE;
+	hospitalPhone.innerHTML = hospital.TELEPHONE;
+	profileLabel.innerHTML = hospital.BEDS;
+	
+	
+	profileimg.src = mapURL;
+
+
+	parent.appendChild(wrapper)
+	
 }
 
 function setCoronaStats(stats) {
