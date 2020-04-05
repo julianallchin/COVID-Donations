@@ -65,6 +65,8 @@ function getNearHospitals() {
 	if (typeof(hospitals) != "undefined" && typeof(ip) != "undefined") {
 		var localHospitals = findHospitals(ip.postal, 100);
 
+		document.getElementById("numHospitals").innerHTML = localHospitals.length;
+
 		localHospitals.forEach(hospital => {
 			putHospital(hospital.properties);
 		});
@@ -89,8 +91,8 @@ function putHospital(hospital) {
 	var hospitalName = document.createElement('h4');
 	var small = document.createElement('small');
 	var hospitalLocation = document.createElement('span');
-	var icon = document.createElement('i');
-	var hospitalWebsite = document.createElement('span');
+	var icon = document.createElement('ICON');
+	var hospitalWebsite = document.createElement('a');
 	var hospitalPhone = document.createElement('p');
 
 	var col = document.createElement('div');
@@ -115,6 +117,7 @@ function putHospital(hospital) {
 	profileLabel.className = 'label label-default rank-label bg-light';
 
 	textleft.appendChild(hospitalName)
+	hospitalLocation.appendChild(icon)
 	small.appendChild(hospitalLocation)
 	textleft.appendChild(small)
 	textleft.appendChild(hospitalWebsite)
@@ -123,8 +126,8 @@ function putHospital(hospital) {
 	col8.appendChild(textleft);
 
 	profileLabelContainer.appendChild(profileLabel)
-	profileHeader.appendChild(profileLabelContainer)
 	profileHeader.appendChild(profileimg)
+	profileHeader.appendChild(profileLabelContainer)
 	profileContainer.appendChild(profileHeader)
 
 	col.appendChild(profileContainer)
@@ -139,8 +142,9 @@ function putHospital(hospital) {
 	hospitalName.innerHTML = hospital.NAME;
 	hospitalLocation.innerHTML = hospital.ADDRESS;
 	hospitalWebsite.innerHTML = hospital.WEBSITE;
+	hospitalWebsite.href = hospital.WEBSITE;
 	hospitalPhone.innerHTML = hospital.TELEPHONE;
-	profileLabel.innerHTML = hospital.BEDS;
+	profileLabel.innerHTML = hospital.BEDS + " Beds";
 	
 	
 	profileimg.src = mapURL;
