@@ -78,8 +78,10 @@ function getNearHospitals() {
 
 function putHospital(hospital) {
 	console.log(hospital)
-	var mapURL = "https://maps.googleapis.com/maps/api/staticmap?center=" +
-	hospital.LATITUDE + "," + hospital.LONGITUDE + "&zoom=12&size=400x400&maptype=roadmap&key=AIzaSyCApByxb6XFxjlNNLplNphviJqnSggA8xI";
+	var mapURL = "https://open.mapquestapi.com/staticmap/v4/getmap?key=zbIGi4Mg5TzTGFaAvgU6jt9vtAO9jMVd&size=400,400&zoom=16&center=" +
+	hospital.LATITUDE + "," + hospital.LONGITUDE;
+
+	var mapLink = "https://www.google.com/maps/dir//" + encodeURI(hospital.ADDRESS);
 	
 	var parent = document.getElementById("nearHospitals");
 
@@ -99,55 +101,64 @@ function putHospital(hospital) {
 	var profileContainer = document.createElement('div');
 	var profileHeader = document.createElement('div');
 	var profileimg = document.createElement('img');
+	var profileimgLink = document.createElement('a');
 	var profileLabelContainer = document.createElement('div');
 	var profileLabel = document.createElement('span');
 	
 	wrapper.className = 'col-xs-12 col-sm-6 col-md-6';
-	card.className = 'well rounded-mg lift p-4 m-4'
+	card.className = 'well rounded-mg shadow-light p-4 m-4'
 	row.className = 'row';
 	col8.className = 'col-8';
 	textleft.className = 'text-left';
 	icon.className = 'fa fa-map-marker';
+	hospitalWebsite.className = 'text-wrap w-100';
+	hospitalWebsite.style = 'white-space: pre-line !important; word-wrap: break-word !important;'
 
 	col.className = 'col';
 	profileContainer.className = 'profile-header-container';
 	profileHeader.className = 'profile-header-img';
-	profileimg.className = 'img-circle rounded-circle shadow';
+	profileimg.className = 'img-circle rounded-circle shadow-light';
 	profileLabelContainer.className = 'rank-label-container';
 	profileLabel.className = 'label label-default rank-label bg-light';
 
-	textleft.appendChild(hospitalName)
-	hospitalLocation.appendChild(icon)
-	small.appendChild(hospitalLocation)
-	textleft.appendChild(small)
-	textleft.appendChild(hospitalWebsite)
-	textleft.appendChild(hospitalPhone)
+	textleft.appendChild(hospitalName);
+	hospitalLocation.appendChild(icon);
+	small.appendChild(hospitalLocation);
+	textleft.appendChild(small);
+	textleft.appendChild(hospitalWebsite);
+	textleft.appendChild(hospitalPhone);
 
 	col8.appendChild(textleft);
 
-	profileLabelContainer.appendChild(profileLabel)
-	profileHeader.appendChild(profileimg)
-	profileHeader.appendChild(profileLabelContainer)
-	profileContainer.appendChild(profileHeader)
+	profileLabelContainer.appendChild(profileLabel);
+	profileimgLink.appendChild(profileimg);
+	profileHeader.appendChild(profileimgLink);
+	profileHeader.appendChild(profileLabelContainer);
+	profileContainer.appendChild(profileHeader);
 
-	col.appendChild(profileContainer)
+	col.appendChild(profileContainer);
 
-	row.appendChild(col8)
-	row.appendChild(col)
+	row.appendChild(col8);
+	row.appendChild(col);
 
-	card.appendChild(row)
+	card.appendChild(row);
 
-	wrapper.appendChild(card)
+	wrapper.appendChild(card);
 	
 	hospitalName.innerHTML = hospital.NAME;
 	hospitalLocation.innerHTML = hospital.ADDRESS;
 	hospitalWebsite.innerHTML = hospital.WEBSITE;
 	hospitalWebsite.href = hospital.WEBSITE;
+	hospitalWebsite.target = '_blank';
 	hospitalPhone.innerHTML = hospital.TELEPHONE;
 	profileLabel.innerHTML = hospital.BEDS + " Beds";
 	
 	
 	profileimg.src = mapURL;
+	profileimg.width = 100;
+	profileimg.height = 100;
+	profileimgLink.href = mapLink;
+	profileimgLink.target = '_blank';
 
 
 	parent.appendChild(wrapper)
