@@ -121,9 +121,9 @@ html {
 .card-header {
     padding: 1rem 1.35rem;
     margin-bottom: 0;
-	background-color: rgba(0, 0, 0, 0.03);
+	background-color: rgba(0, 0, 0, 0.00);
 	border-radius: 0.35rem 0.35rem 0 0;
-	color: rgba(0, 151, 255, 1);
+	color: rgba(0, 0, 0, 0.9);
 	
     border-bottom: none;
 	
