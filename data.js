@@ -9,60 +9,60 @@ var hospitals;
 
 
 
-let binarySearch = function (arr, x) { 
-   
-    let start=0, end=arr.length-1; 
-          
-    // Iterate while start not meets end 
-    while (start<=end){ 
-  
-        // Find the mid index 
-        let mid=Math.floor((start + end)/2); 
-   
-        // If element is present at mid, return True 
-        if (arr[mid]===x) return true; 
-  
-        // Else look in left or right half accordingly 
-        else if (arr[mid] < x)  
-             start = mid + 1; 
-        else
-             end = mid - 1; 
-    } 
-   
-    return false; 
-} 
+let binarySearch = function (arr, x) {
+
+	let start = 0, end = arr.length - 1;
+
+	// Iterate while start not meets end 
+	while (start <= end) {
+
+		// Find the mid index 
+		let mid = Math.floor((start + end) / 2);
+
+		// If element is present at mid, return True 
+		if (arr[mid] === x) return true;
+
+		// Else look in left or right half accordingly 
+		else if (arr[mid] < x)
+			start = mid + 1;
+		else
+			end = mid - 1;
+	}
+
+	return false;
+}
 
 async function getData(url) {
 	let response = await fetch(url);
 
 	if (response.ok) {
-  		let json = await response.json();
+		let json = await response.json();
 		return json;
 	} else {
-  		alert("HTTP-Error: " + response.status);
+		alert("HTTP-Error: " + response.status);
 	}
 };
 
 async function getIPLocation() {
-    return getData("https://ipapi.co/json/");
+	return getData("https://ipapi.co/json/");
 }
 
 function findHospitals(zip, range) {
-    let localHospitals = []
+	let localHospitals = []
 
-    for (let index = 0; index < hospitals.length; index++) {
-        const hospital = hospitals[index];
+	for (let index = 0; index < hospitals.length; index++) {
+		const hospital = hospitals[index];
 
-        if ((hospital.properties.ZIP > zip - range) && (hospital.properties.ZIP < zip + range)) {
-            localHospitals.push(hospital);
-        }
-    }
+		if ((hospital.properties.ZIP > zip - range) && (hospital.properties.ZIP < zip + range)) {
+			localHospitals.push(hospital);
+		}
+	}
 
-    return localHospitals;
+	return localHospitals;
 }
 
 function getNearHospitals() {
-	if (typeof(hospitals) != "undefined" && typeof(ip) != "undefined") {
+	if (typeof (hospitals) != "undefined" && typeof (ip) != "undefined") {
 		var localHospitals = findHospitals(ip.postal, 100);
 
 		document.getElementById("numHospitals").innerHTML = localHospitals.length;
@@ -77,12 +77,11 @@ function getNearHospitals() {
 }
 
 function putHospital(hospital) {
-	console.log(hospital)
 	var mapURL = "https://open.mapquestapi.com/staticmap/v4/getmap?key=zbIGi4Mg5TzTGFaAvgU6jt9vtAO9jMVd&size=400,400&zoom=16&center=" +
-	hospital.LATITUDE + "," + hospital.LONGITUDE;
+		hospital.LATITUDE + "," + hospital.LONGITUDE;
 
 	var mapLink = "https://www.google.com/maps/dir//" + encodeURI(hospital.ADDRESS);
-	
+
 	var parent = document.getElementById("nearHospitals");
 
 	var wrapper = document.createElement('div');
@@ -104,7 +103,7 @@ function putHospital(hospital) {
 	var profileimgLink = document.createElement('a');
 	var profileLabelContainer = document.createElement('div');
 	var profileLabel = document.createElement('span');
-	
+
 	wrapper.className = 'col-xs-12 col-sm-6 col-md-6';
 	card.className = 'well rounded-mg shadow-light p-4 m-4'
 	row.className = 'row';
@@ -144,7 +143,7 @@ function putHospital(hospital) {
 	card.appendChild(row);
 
 	wrapper.appendChild(card);
-	
+
 	hospitalName.innerHTML = hospital.NAME;
 	hospitalLocation.innerHTML = hospital.ADDRESS;
 	hospitalWebsite.innerHTML = hospital.WEBSITE;
@@ -152,8 +151,8 @@ function putHospital(hospital) {
 	hospitalWebsite.target = '_blank';
 	hospitalPhone.innerHTML = hospital.TELEPHONE;
 	profileLabel.innerHTML = hospital.BEDS + " Beds";
-	
-	
+
+
 	profileimg.src = mapURL;
 	profileimg.width = 100;
 	profileimg.height = 100;
@@ -162,7 +161,18 @@ function putHospital(hospital) {
 
 
 	parent.appendChild(wrapper)
-	
+
+}
+
+function read_cookie(name) {
+	var result = document.cookie.match(new RegExp(name + '=([^;]+)'));
+	result && (result = JSON.parse(result[1]));
+	return result;
+}
+
+function bake_cookie(name, value) {
+	var cookie = [name, '=', JSON.stringify(value), '; domain=.', window.location.host.toString(), '; path=/;'].join('');
+	document.cookie = cookie;
 }
 
 function setCoronaStats(stats) {
@@ -173,20 +183,19 @@ function setCoronaStats(stats) {
 }
 
 function getNearCorona() {
-	if (typeof(corona) != "undefined" && typeof(ip) != "undefined") {
+	if (typeof (corona) != "undefined" && typeof (ip) != "undefined") {
 		if (ip.country == "US") {
-			console.log(ip)
 			var localLocations = [];
 			for (let index = 0; index < corona.locations.length; index++) {
 				const location = corona.locations[index];
 				// console.log(location)
-				
-				if(location.province == ip.region) {
+
+				if (location.province == ip.region) {
 					localLocations.push(location);
 				}
 			}
-			
-			var latest = {"location": ip.region, "confirmed": 0, "deaths": 0, "recovered": 0};
+
+			var latest = { "location": ip.region, "confirmed": 0, "deaths": 0, "recovered": 0 };
 			for (let index = 0; index < localLocations.length; index++) {
 				const localLatest = localLocations[index].latest;
 
@@ -194,12 +203,16 @@ function getNearCorona() {
 				latest.deaths += localLatest.deaths;
 				latest.deaths += localLatest.deaths;
 
-				
-				
+
+
 			}
+
+			bake_cookie("latestStats", latest);
+
+			setCoronaStats(latest);
+
 			console.log(localLocations)
 
-			setCoronaStats(latest)
 		} else {
 
 		}
@@ -211,7 +224,7 @@ function getNearCorona() {
 
 getData(ipURL).then(json => {
 	ip = json;
-	if(ip.country != "US") {
+	if (ip.country != "US") {
 		getData(coronaWorldURL).then(json => {
 			corona = json;
 		});
@@ -225,17 +238,28 @@ getData(ipURL).then(json => {
 
 getData(hospitalsURL).then(json => {
 	hospitals = json.features;
-    hospitals.sort((a, b) => (a.properties.ZIP > b.properties.ZIP) ? 1:-1);
+	hospitals.sort((a, b) => (a.properties.ZIP > b.properties.ZIP) ? 1 : -1);
 })
 
 getNearHospitals();
-getNearCorona();
- 
+
+var latestStats = read_cookie("latestStats");
+console.log(latestStats)
+
+if (latestStats == null) {
+	console.log("coronaing")
+	getNearCorona();
+} else {
+
+	setCoronaStats(latestStats);
+}
+
+
 
 async function organizeData(json) {
 	console.log(json)
-	
-	
+
+
 	// Needs optimization
 	// document.getElementById("stats-1").innerHTML = countryStats.active;
 	// document.getElementById("stats-2").innerHTML = countryStats.cases;
