@@ -61,12 +61,32 @@ function findHospitals(zip, range) {
 	return localHospitals;
 }
 
-function getNearHospitals() {
-	if (typeof (hospitals) != "undefined" && typeof (ip) != "undefined") {
-		var localHospitals = findHospitals(ip.postal, 100);
+Element.prototype.remove = function() {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for(var i = this.length - 1; i >= 0; i--) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
+}
 
+function getNearHospitals(zip) {
+	if (typeof (hospitals) != "undefined" && typeof (ip) != "undefined") {
+		
+
+		var localHospitals;
+
+		if (!zip)
+			localHospitals = findHospitals(ip.postal, 100);
+		else 
+			localHospitals = findHospitals(zip, 100);
+
+		// document.getElementById("zip").value = ip.postal
 		document.getElementById("numHospitals").innerHTML = localHospitals.length;
 
+		document.getElementsByClassName('hospital22').remove();
 		localHospitals.forEach(hospital => {
 			putHospital(hospital.properties);
 		});
@@ -104,7 +124,7 @@ function putHospital(hospital) {
 	var profileLabelContainer = document.createElement('div');
 	var profileLabel = document.createElement('span');
 
-	wrapper.className = 'col-xs-12 col-sm-6 col-md-6';
+	wrapper.className = 'col-xs-12 col-sm-6 col-md-6 hospital22';
 	card.className = 'well rounded-mg shadow-light p-4 m-4'
 	row.className = 'row';
 	col8.className = 'col-8';

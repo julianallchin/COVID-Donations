@@ -148,8 +148,9 @@
 
 								<h2>Hospitals near you</h2>
 								<p class="text-secondary">
-									We found <span id="numHospitals">0</span> hospitals
+									We found <span id="numHospitals">0</span> hospitals or enter zip code
 								</p>
+								<input class="zip p-2 text-center shadow-light" id="zip" name="zip" placeholder="XXXXX" onchange="getNearHospitals(this.value)" type="text" pattern="[0-9]*">
 							</div>
 						</div>
 					</div>
